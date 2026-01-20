@@ -147,7 +147,7 @@ const ComingSoon = () => {
   }, []);
 
   const TimeUnit = ({ value, label }) => (
-    <div className="flex flex-col items-center bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl min-w-[90px]">
+    <div className="flex flex-col items-center bg-white/10 backdrop-blur-md border-b-4  border-b-[#87ac2c] border-white/20 px-6 py-4 rounded-xl min-w-[90px]">
       <span className="text-3xl md:text-4xl font-bold">
         {String(value).padStart(2, "0")}
       </span>
@@ -160,22 +160,27 @@ const ComingSoon = () => {
   return (
     <div
       className="relative min-h-screen flex flex-col bg-contain bg-no-repeat bg-center text-white"
-      style={{ backgroundImage: `url(${chetifyBg})` }}
+      style={{ backgroundImage: `url(${chetifyBg})`, backgroundColor: "rgb(0,0,0,0.3)" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
-        <div className="w-[200px] h-[200px] mb-6">
+
+
+      <div className="absolute left-10 top-40 flex flex-col items-center z-10">
+
+                <div className="w-[200px] h-[200px] mb-6">
           <img src={logo} alt="Chetify Logo" />
         </div>
 
-        <h2 className="text-3xl font-light uppercase mb-4 tracking-wider">
-          Launching Soon
+        <h2 className="text-3xl font-bold uppercase mb-4 tracking-wider animate-bounce">
+          Launching <span className="text-[#86ac3c]">Soon</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-4">
+      </div>
+      <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
+        <div className="flex flex-col absolute right-30 top-30 gap-5 ">
           <TimeUnit value={timeLeft.days} label="Days" />
           <TimeUnit value={timeLeft.hours} label="Hours" />
           <TimeUnit value={timeLeft.minutes} label="Minutes" />
@@ -184,7 +189,7 @@ const ComingSoon = () => {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-[#2C4464]/95 py-8 px-6">
+      <footer className="relative z-10 bg-[#2C4464]/95 py-3 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 text-sm">
           <div className="space-y-2">
             <p className="font-semibold uppercase tracking-wide">Contact</p>
