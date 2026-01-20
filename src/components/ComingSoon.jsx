@@ -103,7 +103,7 @@
 // };
 
 // export default ComingSoon;
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logo from "../assets/logo.png";
 import chetifyBg from "../assets/chetifybg.png";
@@ -111,14 +111,22 @@ import chetifyBg from "../assets/chetifybg.png";
 const COUNTDOWN_DAYS = 21;
 
 const ComingSoon = () => {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  // ✅ target date calculated ONCE
+  const targetDateRef = useRef(
+    new Date(Date.now() + COUNTDOWN_DAYS * 24 * 60 * 60 * 1000)
+  );
 
-  function getTimeLeft() {
-    const target = new Date();
-    target.setDate(target.getDate() + COUNTDOWN_DAYS);
+  const calculateTimeLeft = () => {
+    const diff = targetDateRef.current - new Date();
 
-    const diff = target - new Date();
-    if (diff <= 0) return null;
+    if (diff <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
+    }
 
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -126,11 +134,13 @@ const ComingSoon = () => {
       minutes: Math.floor((diff / (1000 * 60)) % 60),
       seconds: Math.floor((diff / 1000) % 60),
     };
-  }
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
@@ -149,7 +159,7 @@ const ComingSoon = () => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col bg-cover bg-center text-white"
+      className="relative min-h-screen flex flex-col bg-contain bg-no-repeat bg-center text-white"
       style={{ backgroundImage: `url(${chetifyBg})` }}
     >
       {/* Overlay */}
@@ -157,28 +167,25 @@ const ComingSoon = () => {
 
       {/* Content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
-        <div className="w-[200px] h-[200px] flex mb-6">
+        <div className="w-[200px] h-[200px] mb-6">
           <img src={logo} alt="Chetify Logo" />
         </div>
 
-        <h2 className="text-3xl font-light uppercase mb-3  tracking-wider">
+        <h2 className="text-3xl font-light uppercase mb-4 tracking-wider">
           Launching Soon
         </h2>
 
-        {timeLeft && (
-          <div className="flex flex-wrap justify-center gap-4">
-            <TimeUnit value={timeLeft.days} label="Days" />
-            <TimeUnit value={timeLeft.hours} label="Hours" />
-            <TimeUnit value={timeLeft.minutes} label="Minutes" />
-            <TimeUnit value={timeLeft.seconds} label="Seconds" />
-          </div>
-        )}
+        <div className="flex flex-wrap justify-center gap-4">
+          <TimeUnit value={timeLeft.days} label="Days" />
+          <TimeUnit value={timeLeft.hours} label="Hours" />
+          <TimeUnit value={timeLeft.minutes} label="Minutes" />
+          <TimeUnit value={timeLeft.seconds} label="Seconds" />
+        </div>
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-[#2C4464]/95 text-white py-8 px-6">
+      <footer className="relative z-10 bg-[#2C4464]/95 py-8 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 text-sm">
-          {/* Contact */}
           <div className="space-y-2">
             <p className="font-semibold uppercase tracking-wide">Contact</p>
             <p className="flex items-center gap-2">
@@ -192,7 +199,6 @@ const ComingSoon = () => {
             </p>
           </div>
 
-          {/* Location */}
           <div className="space-y-2">
             <p className="font-semibold uppercase tracking-wide">Location</p>
             <p className="flex items-start gap-2">
@@ -203,9 +209,7 @@ const ComingSoon = () => {
             </p>
           </div>
 
-          {/* Company */}
           <div className="space-y-2 md:text-right">
-            {/* <p className="font-semibold uppercase tracking-wide">Chetify</p> */}
             <p className="opacity-90">&copy; 2026 Chetify. All Rights Reserved</p>
             <p className="italic opacity-70">
               A product of LogicLeap Africa Technologies Limited
