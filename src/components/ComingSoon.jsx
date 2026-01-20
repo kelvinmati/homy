@@ -191,7 +191,7 @@ const ComingSoon = () => {
 </div>
 
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
-        <div className="flex flex-col absolute right-30 top-30 gap-5 ">
+        <div className="flex flex-col absolute right-30 top-10 gap-5 ">
           <TimeUnit value={timeLeft.days} label="Days" />
           <TimeUnit value={timeLeft.hours} label="Hours" />
           <TimeUnit value={timeLeft.minutes} label="Minutes" />
