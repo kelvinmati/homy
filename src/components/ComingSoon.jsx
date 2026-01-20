@@ -157,11 +157,11 @@ const ComingSoon = () => {
 
       {/* Content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
-        <div className="w-[260px] md:w-[320px] mb-6">
+        <div className="w-[200px] h-[200px] flex mb-6">
           <img src={logo} alt="Chetify Logo" />
         </div>
 
-        <h2 className="text-3xl font-light uppercase mb-10 tracking-wider">
+        <h2 className="text-3xl font-light uppercase  tracking-wider">
           Launching Soon
         </h2>
 
