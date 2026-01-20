@@ -161,7 +161,7 @@ const ComingSoon = () => {
           <img src={logo} alt="Chetify Logo" />
         </div>
 
-        <h2 className="text-3xl font-light uppercase  tracking-wider">
+        <h2 className="text-3xl font-light uppercase mb-3  tracking-wider">
           Launching Soon
         </h2>
 
