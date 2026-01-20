@@ -106,7 +106,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logo from "../assets/logo.png";
-import chetifyBg from "../assets/chetifybg.png";
+import chetifyBg from "../assets/screenshotbg.png";
 
 const COUNTDOWN_DAYS = 21;
 
@@ -167,8 +167,7 @@ const ComingSoon = () => {
 
       {/* Content */}
 
-
-      <div className="absolute left-10 top-40 flex flex-col items-center z-10">
+      {/* <div className="absolute left-10 top-40 flex flex-col items-center z-10">
 
                 <div className="w-[200px] h-[200px] mb-6">
           <img src={logo} alt="Chetify Logo" />
@@ -178,7 +177,19 @@ const ComingSoon = () => {
           Launching <span className="text-[#86ac3c]">Soon</span>
         </h2>
 
-      </div>
+      </div> */}
+
+
+<div className="flex items-center justify-between  z-10 px-32">
+                  <div className="w-[170px] h-[170px] ">
+          <img src={logo} alt="Chetify Logo" />
+        </div>
+           <h2 className="text-4xl font-bold uppercase tracking-wider  animate-bounce">
+          Launching <span className="text-[#86ac3c]">Soon</span>
+        </h2>
+
+</div>
+
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 px-4">
         <div className="flex flex-col absolute right-30 top-30 gap-5 ">
           <TimeUnit value={timeLeft.days} label="Days" />
