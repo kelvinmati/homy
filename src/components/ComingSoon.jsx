@@ -15,6 +15,10 @@ import {
   Linkedin,
 } from "lucide-react";
 
+import logo from "../assets/homylogo-removebg-preview.png";
+
+
+
 /**
  * Homy — "Coming Soon" landing page
  * React + Tailwind CSS
@@ -198,12 +202,16 @@ export default function ComingSoon() {
         </h1>
 
         {/* wordmark */}
-        <p
+        {/* <p
           className="mt-3 text-center text-6xl text-lime-300 sm:text-7xl"
-          style={{ fontFamily: "plus-jakarta-sans, sans-serif" }}
+          style={{ fontFamily: "'Comic Sans MS', cursive" }}
         >
           homy
-        </p>
+        </p> */}
+
+<div className="flex justify-center">
+  <img src={logo} alt="Homy Logo" />
+</div>
 
         {/* subtitle */}
         <p className="mx-auto mt-5 max-w-xl text-center text-sm text-stone-300 sm:text-base">
