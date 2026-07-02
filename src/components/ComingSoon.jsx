@@ -200,7 +200,7 @@ export default function ComingSoon() {
         {/* wordmark */}
         <p
           className="mt-3 text-center text-6xl text-lime-300 sm:text-7xl"
-          style={{ fontFamily: "'Comic Sans MS', cursive" }}
+          style={{ fontFamily: "plus-jakarta-sans, sans-serif" }}
         >
           homy
         </p>
