@@ -85,9 +85,15 @@ function PhoneMock() {
             </div>
 
             <div className="mt-2 overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-              <div
+              {/* <div
                 className={`h-28 w-full bg-gradient-to-br ${LISTINGS[0].gradient}`}
-              />
+              /> */}
+
+              <div className="h-28" >
+                <img src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D" alt="House" className="h-full w-full object-cover" />
+
+
+              </div>
               <div className="flex items-center justify-between px-2.5 py-2">
                 <div>
                   <p className="text-[11px] font-medium text-white">
@@ -117,12 +123,22 @@ function PhoneMock() {
             </div>
 
             <div className="mt-2 grid grid-cols-2 gap-2">
-              {NEARBY.map((n, i) => (
+              {/* {NEARBY.map((n, i) => (
                 <div
                   key={i}
                   className={`h-20 rounded-xl bg-gradient-to-br ${n.gradient}`}
                 />
-              ))}
+              ))} */}
+
+              <div className="h-20">
+<img src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D" alt="House" className="h-full w-full rounded-xl object-cover" />
+
+
+              </div>
+              <div className="h-20">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D" alt="House" className="h-full w-full rounded-xl object-cover" />
+
+              </div>
             </div>
           </div>
         </div>
@@ -162,19 +178,20 @@ export default function ComingSoon() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0A6A43] text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#04442a] text-white">
       <BackgroundArt />
 
-      <div className="relative mx-auto max-w-5xl px-6 py-16 sm:py-20">
+      <div className="relative mx-auto max-w-5xl px-6 py-10 sm:py-20">
         {/* eyebrow badge */}
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-lime-400/30 bg-lime-400/5 px-4 py-1.5 text-xs font-medium text-lime-300">
             <span aria-hidden>✦</span> Something great is coming
           </span>
-        </div>
+        </div> */}
+
 
         {/* headline */}
-        <h1 className="mt-6 text-center text-4xl font-bold leading-tight sm:text-5xl">
+        <h1 className=" text-center text-4xl font-bold leading-tight sm:text-5xl">
           Curious enough?
           <br />
           Stay tuned!
@@ -293,18 +310,6 @@ export default function ComingSoon() {
         </div>
       </div>
 
-      {/* giant watermark wordmark */}
-      <div className="relative mt-4 select-none overflow-hidden">
-        <p
-          className="-mb-6 text-center text-[18vw] leading-none text-lime-400/10 sm:text-[14vw]"
-          style={{ fontFamily: "'Comic Sans MS', cursive" }}
-        >
-          homy
-        </p>
-        <p className="pb-6 text-center text-[11px] text-stone-500">
-          © 2024 Homy. All rights reserved.
-        </p>
-      </div>
     </div>
   );
 }
