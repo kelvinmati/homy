@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import logo from "../assets/homylogo-removebg-preview.png";
+import LandlordModal from "./LandlordModal";
 
 
 
@@ -183,6 +184,7 @@ export default function ComingSoon() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -351,7 +353,10 @@ export default function ComingSoon() {
               <p className="text-xs text-stone-400">
                 Register your interest and list with Homy.
               </p>
-              <button className="mt-1 inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-2 text-xs font-medium text-white transition hover:bg-white/5">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-1 inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-4 py-2 text-xs font-medium text-white transition hover:bg-white/5"
+              >
                 Register interest <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
@@ -373,6 +378,11 @@ export default function ComingSoon() {
             <Linkedin className="h-5 w-5" />
           </a>
         </div>
+
+        <LandlordModal
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
 
     </div>
