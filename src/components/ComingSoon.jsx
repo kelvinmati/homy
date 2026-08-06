@@ -52,9 +52,9 @@ function PhoneMock() {
   return (
     <div className="relative mx-auto w-[260px] sm:w-[300px]">
       {/* phone frame */}
-      <div className="relative rounded-[2.5rem] border-4 border-white/10 bg-[#054429] p-2 shadow-2xl shadow-black/50 ring-1 ring-white/5">
+      <div className="relative rounded-[2.5rem] border-4 border-white/10 bg-black p-2 shadow-2xl shadow-black/50 ring-1 ring-white/5">
         {/* notch */}
-        <div className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-[#054429]" />
+        <div className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
         <div className="overflow-hidden rounded-[2rem] bg-[#06502F]">
           <div className="h-[520px] overflow-hidden px-4 pb-4 pt-8">
             {/* app header */}
@@ -302,19 +302,19 @@ export default function ComingSoon() {
         </div>
 
         {/* social row */}
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-stone-400">
-          <span className="flex items-center gap-1.5">
-            <Instagram className="h-3.5 w-3.5" /> @homy.ke
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Facebook className="h-3.5 w-3.5" /> facebook.com/homy.ke
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Twitter className="h-3.5 w-3.5" /> @homy_ke
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Linkedin className="h-3.5 w-3.5" /> linkedin.com/company/homy-ke
-          </span>
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-5">
+          <a href="https://www.instagram.com/homy.ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 transition-colors duration-200 hover:text-pink-500">
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a href="https://www.facebook.com/homy.ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 transition-colors duration-200 hover:text-blue-500">
+            <Facebook className="h-5 w-5" />
+          </a>
+          <a href="https://twitter.com/homy_ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 transition-colors duration-200 hover:text-sky-500">
+            <Twitter className="h-5 w-5" />
+          </a>
+          <a href="https://www.linkedin.com/company/homy-ke" target="_blank" rel="noopener noreferrer" className="text-stone-400 transition-colors duration-200 hover:text-blue-600">
+            <Linkedin className="h-5 w-5" />
+          </a>
         </div>
       </div>
 
