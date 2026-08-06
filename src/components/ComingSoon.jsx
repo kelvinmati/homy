@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Search,
   Home,
@@ -180,6 +181,49 @@ function BackgroundArt() {
 
 export default function ComingSoon() {
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const serviceId = "service_fp2uqzn"
+    const templateId = "template_hliujle";
+    const publicKey = "user_GQR0KqhGk7eUTDPiSP1Of";
+
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus("error");
+      setMessage(
+        "Email notifications are not configured yet. Please check your .env file."
+      );
+      return;
+    }
+
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          user_email: email,
+          submitted_at: new Date().toLocaleString(),
+        },
+        { publicKey }
+      );
+      setStatus("success");
+      setMessage("You're on the list! We'll notify you when we go live.");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+      setMessage(
+        "Something went wrong. Please try again or email us at hello@homy.co.ke."
+      );
+      console.error("EmailJS error:", err);
+    }
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#04442a] text-white">
@@ -258,7 +302,7 @@ export default function ComingSoon() {
               </p>
 
               <form
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
                 className="mt-4 flex flex-col gap-2 sm:flex-row"
               >
                 <input
@@ -266,20 +310,33 @@ export default function ComingSoon() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="w-full flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-stone-500 outline-none focus:border-lime-400/60 focus:ring-1 focus:ring-lime-400/60"
+                  required
+                  disabled={status === "sending"}
+                  className="w-full flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-stone-500 outline-none focus:border-lime-400/60 focus:ring-1 focus:ring-lime-400/60 disabled:opacity-50"
                 />
                 <button
                   type="submit"
-                  className="shrink-0 rounded-lg bg-lime-300 px-5 py-2.5 text-sm font-semibold text-[#0A6A43] transition hover:bg-lime-200"
+                  disabled={status === "sending"}
+                  className="shrink-0 rounded-lg bg-lime-300 px-5 py-2.5 text-sm font-semibold text-[#0A6A43] transition hover:bg-lime-200 disabled:cursor-not-allowed disabled:opacity-50"
                   style={{ boxShadow: "0 4px 14px rgba(190,242,100,0.25)" }}
                 >
-                  Notify me
+                  {status === "sending" ? "Notifying..." : "Notify me"}
                 </button>
               </form>
 
-              <p className="mt-2.5 text-[11px] text-stone-500">
-                🔒 No spam. Just important updates.
-              </p>
+              {message && (
+                <p
+                  className={`mt-3 text-xs ${
+                    status === "success"
+                      ? "text-lime-300"
+                      : "text-red-300"
+                  }`}
+                >
+                  {message}
+                </p>
+              )}
+
+      
             </div>
 
             <div className="hidden bg-white/10 sm:block" />
